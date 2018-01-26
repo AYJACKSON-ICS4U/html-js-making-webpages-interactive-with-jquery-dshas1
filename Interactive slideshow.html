@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Interactive slideshow</title>
+        <style>
+            button {
+                background-color: rgb(0,150,150);
+                border: 3px groove rgb(210,150, 25);
+                border-radius: 10px;
+                color: white;
+                padding: 5px 5px;
+                font-size: 16px;
+            }
+            #derp {
+                transform: rotate(180deg);
+            }
+            #imgdiv {
+                border: 5px ridge rgb(150,150,150);
+                padding: 5px;
+                width: 400px;
+                background: rgb(200,200,200);
+                text-align: center;
+            }
+            #prevbutton {
+                position: relative;
+                left: -130px;
+            }
+            #nextbutton {
+                position: relative;
+                right: -130px;
+            }
+            #captiondiv {
+                position:relative;
+                top: -37px;
+                left: 80px;
+                height: 0px;
+                width: 250px;
+            }
+        </style>
+    </head>
+    <body>
+    <br>
+    <div id="imgdiv">
+    <img src="https://www.kasandbox.org/programming-images/food/mushroom.png" width="400" alt="Mushrooms">
+    <button type="button" id="prevbutton">Previous</button>
+    <button type="button" id="nextbutton">Next</button>
+    <div id="captiondiv">
+        <p id="caption">edible or toxic?</p>
+    </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    var i = 0;
+    var imgSrc = ["https://www.kasandbox.org/programming-images/food/mushroom.png", "https://www.kasandbox.org/programming-images/animals/birds_rainbow-lorakeets.png", "https://www.kasandbox.org/programming-images/animals/butterfly.png", "https://www.kasandbox.org/programming-images/animals/cat.png", "https://www.kasandbox.org/programming-images/animals/crocodiles.png", "https://www.kasandbox.org/programming-images/animals/fox.png"];
+    var imgAlt = ["mushroom", "lorakeets", "butterfly", "cat", "crocodiles", "fox"]
+    var caption = ["edible or toxic?", "perrty birbs", "i am a beautiful butterfly!", "kitty meow", "tick tock tick tock", "im proud of you, carrots"]
+    addi = function() {
+        if(i < imgSrc.length - 1) {
+            i++;
+        } else {
+            i = 0;
+        }
+    }
+    subi = function() {
+        if(i > 0) {
+            i--;
+        } else {
+            i = 5;
+        }
+    }
+    $('#nextbutton').on('click', function(event) {
+        addi();
+        $('img').attr('src', imgSrc[i]). attr('alt', imgAlt[i]);
+        $('p').text(caption[i]);
+        $("img").hide();
+        $("img").fadeIn();
+    });
+    $('#prevbutton').on('click', function(event) {
+        $("img").slideUp();
+        subi();
+        $('img').attr('src', imgSrc[i]). attr('alt', imgAlt[i]);
+        $('p').text(caption[i]);
+        $("img").hide();
+        $("img").fadeIn();
+    });
+    </script> 
+    </body>
+</html>
