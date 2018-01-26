@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Scene change</title>
+        <style>
+        #leafers {
+            position: absolute;
+            top: 210px;
+            left: 378px;
+        }
+        .dot {
+            position:absolute;
+            top:100px;
+            left:100px;
+            background:black;
+            width:10px;
+            height:10px;
+            border-radius:100%;
+        }
+        .bird {
+            position:absolute;
+            top:100px;
+            left:100px;
+            width:10px;
+            height:10px;
+            background-image:url("https://www.kasandbox.org/programming-images/avatars/piceratops-sapling.png");
+            background-color:green;
+            border-radius:100%;
+        }
+        #jiggle {
+            position:absolute;
+            top:100px;
+            left:50px;
+        }
+        #jiggleText {
+            position:absolute;
+            top:85px;
+            left:100px;
+        }
+        </style>
+    </head>
+    <body>
+
+    <img src="https://www.kasandbox.org/programming-images/landscapes/beach-with-palm-trees.png" id="beach">
+
+    <img src="https://www.kasandbox.org/programming-images/avatars/leafers-seedling.png" id="leafers">
+    <div id="jiggleDiv">
+    <p id="jiggleText">click ME!</p>
+        <img src="https://www.kasandbox.org/programming-images/avatars/marcimus.png" id="jiggle">
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $("#leafers").on("click", function(event) {
+            // Do something!
+            var $dot = $("<div></div>");
+            $dot.addClass("dot");
+            
+            $dot.appendTo("body");
+            
+            $dot.css("top",event.pageY + "px");
+            $dot.css("left",event.pageX + "px");      
+            });
+        $("#beach").on("click",function(event) {
+           var $bird = $("<div></div>");
+            $bird.addClass("bird");
+            
+            $bird.appendTo("body");
+            
+            $bird.css("top",event.pageY + "px");
+            $bird.css("left",event.pageX + "px");    
+        });
+            $("#jiggleDiv").on("click",function(event) {
+        $("#jiggleDiv").remove();
+        });
+    </script>
+    </body>
+</html>
